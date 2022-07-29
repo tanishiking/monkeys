@@ -2,4 +2,4 @@
 
 package monkeys
 
-object TestDeps
+object TestProject

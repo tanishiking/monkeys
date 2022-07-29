@@ -1,13 +1,12 @@
 SCALA := scala-cli
-SCALA_VERSION := "3.2.0-RC2"
 
 .PHONY: run
 run:
-	$(SCALA) run . -S $(SCALA_VERSION)
+	$(SCALA) run .
 
 .PHONY: test
 test:
-	$(SCALA) test . -S $(SCALA_VERSION)
+	$(SCALA) test .
 
 .PHONY: clean
 clean:
