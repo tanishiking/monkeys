@@ -7,7 +7,7 @@ class Scanner(input: String):
 
   readChar
 
-  def nextToken: Token =
+  def nextToken(): Token =
     def readOne(tok: Token) =
       readChar
       tok

@@ -44,6 +44,7 @@ case class Token(
     literal: String,
 ):
   def isEOF = tokenType == TokenType.EOF
+  def is(expect: TokenType): Boolean = tokenType == expect
 
 val keywords: Map[String, TokenType] = Map(
   "fn" -> TokenType.FUNCTION,

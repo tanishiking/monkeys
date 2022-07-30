@@ -4,9 +4,17 @@ SCALA := scala-cli
 run:
 	$(SCALA) run .
 
+.PHONY: compile
+compile:
+	$(SCALA) compile .
+
 .PHONY: test
 test:
 	$(SCALA) test .
+
+.PHONY: fmt
+fmt:
+	$(SCALA) fmt .
 
 .PHONY: clean
 clean:

@@ -17,10 +17,10 @@ class SnannerTests extends munit.FunSuite {
     )
 
     val buf = scala.collection.mutable.ListBuffer[Token]()
-    var tok = sc.nextToken
+    var tok = sc.nextToken()
     while !tok.isEOF do
       buf.append(tok)
-      tok = sc.nextToken
+      tok = sc.nextToken()
     val actual = buf.toList
     assertEquals(actual, expected)
   }
@@ -134,10 +134,10 @@ class SnannerTests extends munit.FunSuite {
     )
 
     val buf = scala.collection.mutable.ListBuffer[Token]()
-    var tok = sc.nextToken
+    var tok = sc.nextToken()
     while !tok.isEOF do
       buf.append(tok)
-      tok = sc.nextToken
+      tok = sc.nextToken()
     val actual = buf.toList
     // actual.zip(expected).foreach((a, e) => println(s"$a vs $e"))
     assertEquals(actual, expected)

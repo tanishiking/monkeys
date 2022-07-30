@@ -20,10 +20,10 @@ class REPL(in: InputStream, out: OutputStream):
         val input = ioScanner.nextLine()
         val sc = new scanner.Scanner(s"$input\n")
 
-        var tok = sc.nextToken
+        var tok = sc.nextToken()
         while !tok.isEOF do
           writer.println(tok)
-          tok = sc.nextToken
+          tok = sc.nextToken()
         end while
         writer.flush
       end while
