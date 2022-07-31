@@ -21,10 +21,11 @@ class ParserTests extends munit.FunSuite:
       ("y", 10),
       ("foobar", 838383),
     )
-    val program = parser.parseProgram()
-    assertEquals(program.stmts.length, expects.length)
+    val parsed = parser.parse()
+    checkNoParseErrors(parsed)
+    assertEquals(parsed.program.stmts.length, expects.length)
 
-    program.stmts.zip(expects).map { case (stmt, (name, _)) =>
+    parsed.program.stmts.zip(expects).map { case (stmt, (name, _)) =>
       checkLetStatement(stmt, name)
     }
   }
@@ -38,3 +39,9 @@ class ParserTests extends munit.FunSuite:
         assertEquals(l.tokenLiteral, name)
       case _ =>
         fail(s"LetStatement is expected, but actual: $stmt")
+
+  private def checkNoParseErrors(parsed: Parsed)(implicit loc: Location): Unit =
+    if parsed.errors.isEmpty then ()
+    else
+      val errs = parsed.errors.map(e => e.getMessage()).mkString("\n")
+      fail(s"Found ${parsed.errors.length} parse errors:\n$errs")
