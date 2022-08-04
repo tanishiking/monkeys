@@ -30,6 +30,22 @@ class ParserTests extends munit.FunSuite:
     }
   }
 
+  test("return-statement") {
+    val input = """
+    |return 5;
+    |return 10;
+    |return 993322;
+    |""".stripMargin
+    val scanner = new Scanner(input)
+    val parser = new Parser(scanner)
+
+    val expects = Seq[(String, Int)](
+      ("x", 5),
+      ("y", 10),
+      ("foobar", 838383),
+    )
+  }
+
   private def checkLetStatement(stmt: Statement, name: String)(implicit
       loc: Location,
   ) =
